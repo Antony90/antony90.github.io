@@ -25,7 +25,8 @@ import {
   SiOpenai,
   SiCplusplus,
   SiLlvm,
-  SiHuggingface
+  SiHuggingface,
+  SiKeras
 } from 'react-icons/si';
 import projects from '@/data/projects.json'
 
@@ -79,6 +80,11 @@ export const TECH_NAMES = {
     display: "Jest",
     color: "bg-red-800/30 text-red-200",
     icon: SiJest,
+  },
+  keras: {
+    display: "Keras",
+    color: "bg-red-800/30 text-red-200",
+    icon: SiKeras,
   },
   github_actions: {
     display: "GitHub Actions",
