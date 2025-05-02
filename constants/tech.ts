@@ -191,10 +191,18 @@ export function getTechIcon(name: TechName): TechIcon {
   return TECH_NAMES[name].icon;
 }
 
+export function getTechList(): TechName[] {
+  return Object.keys(TECH_NAMES) as TechName[];
+}
+
+
+
+
 if (process.env.NODE_ENV === "development") {
   const unusedTech = new Set(Object.keys(TECH_NAMES));
   projects.forEach((proj) => {
     proj.techList.forEach((t) => unusedTech.delete(t));
   });
+  console.log("Unused tech:", unusedTech.size);
   console.log(unusedTech);
 }
