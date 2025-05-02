@@ -12,13 +12,16 @@ export default function HeroSection() {
       aria-label="hero"
       className="flex flex-col gap-6 rounded-lg bg-zinc-900 p-6 text-white"
     >
-      {/* Profile Section */}
       <div className="flex flex-col gap-6 rounded-lg bg-zinc-800 p-6">
         <div className="flex items-center gap-6">
           <h1 className="text-5xl font-semibold">{identity.name}</h1>
           <div className="ml-auto flex gap-6 max-sm:flex-col max-sm:gap-2">
-            <FaGithub className="size-8" />
-            <FaLinkedin className="size-8" />
+            <a target="_blank" href={identity.githubUrl}>
+              <FaGithub className="size-8" />
+            </a>
+            <a target="_blank" href={identity.linkedinUrl}>
+              <FaLinkedin className="size-8" />
+            </a>
             <MdEmail className="size-8" />
           </div>
         </div>
@@ -37,8 +40,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="flex gap-6">
-        <div className="flex-1 overflow-hidden rounded-lg bg-zinc-800 p-6">
+        <div className="rounded-lg bg-zinc-800 p-6">
           <div className="relative overflow-hidden">
             <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-zinc-800 to-transparent" />
             <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-zinc-800 to-transparent" />
@@ -66,7 +68,6 @@ export default function HeroSection() {
                     />
                   ),
                 )}
-              </div>
             </div>
           </div>
         </div>

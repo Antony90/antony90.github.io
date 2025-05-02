@@ -1,5 +1,5 @@
+import Heading from "@/components/ui/Heading";
 import Link from "next/link";
-import { title } from "process";
 import React from "react";
 import { FaCode } from "react-icons/fa";
 import { IoLockClosed } from "react-icons/io5";
@@ -12,7 +12,7 @@ export default function ProjectTitle({ title, sourceURL }: { title: string, sour
         target="_blank"
         className="relative text-xl font-semibold text-white"
       >
-        {title}
+        <Heading text={title}/>
         {sourceURL && (
           <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-green-400 transition-all duration-300 group-hover:w-full"></span>
         )}
