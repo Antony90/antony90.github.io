@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Heading({ text, className }: { text: string, className?: string }) {
+export default function Heading({ children, className }: { children: React.ReactNode, className?: string }) {
   return (
-    <h1 className={`text-xl font-semibold text-white ${className}`}>{text}</h1>
+    <h1 className={`font-semibold text-white ${className || ""}`}>{children}</h1>
   )
 }
