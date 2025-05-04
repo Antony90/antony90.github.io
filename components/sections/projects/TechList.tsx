@@ -9,7 +9,7 @@ const EXTRA_SCROLL_OFFSET = 60;
 
 export default function TechList({ items }: { items: TechName[] }) {
   const contentRef = useRef<HTMLDivElement>(null);
-  const [shouldAnimate, setShouldAnimate] = useState(false);
+  const [shouldAnimate, setShouldAnimate] = useState(true); // Default to true to avoid flicker on first render
   const [overflowAmount, setOverflowAmount] = useState(0);
 
   // Calculate overflow and animation needs
@@ -44,7 +44,7 @@ export default function TechList({ items }: { items: TechName[] }) {
     "group-hover:animate-[scroll-out_var(--scroll-duration)_linear_forwards,hold-position_1s_linear_var(--scroll-duration)_forwards,scroll-back_var(--scroll-duration)_linear_calc(var(--scroll-duration)_+_1s)_forwards]";
 
   return (
-    <div className="relative h-8 w-full overflow-hidden">
+    <footer className="relative h-8 w-full overflow-hidden">
       <div
         ref={contentRef}
         // Enable scrollbar on touchscreens, as hover is available to autoscroll
@@ -63,6 +63,6 @@ export default function TechList({ items }: { items: TechName[] }) {
           <div className="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-zinc-800 to-transparent " />
         </>
       )}
-    </div>
+    </footer>
   );
 }
