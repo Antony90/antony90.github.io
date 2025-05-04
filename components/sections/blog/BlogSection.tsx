@@ -8,31 +8,33 @@ export default async function BlogSection() {
   const posts = await getAllPosts();
 
   return (
-    <Section
-      label="Blog"
-      color="red"
-    >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+    <Section label="Blog" color="red">
+      <div className="flex max-w-[900px] flex-col gap-6">
         {posts.map((post) => (
           <Link
             key={post.slug}
             href={`/${post.slug}`}
-            className="group flex flex-col gap-4 p-6 bg-zinc-800 rounded-lg shadow-md"
+            className=""
             aria-label={`Read more about ${post.title}`}
           >
-            {/* Title */}
-            <Heading className="relative w-fit">
-              {post.title}
-              <HeadingUnderline color="red" />
-            </Heading>
-            {/* Description */}
-            <p className="text-gray-400 grow group-hover:text-gray-200 line-clamp-3">
-              {post.description}
-            </p>
-            {/* Metadata */}
-            <div className="flex justify-between items-center text-sm text-gray-500 group-hover:text-gray-300">
-              <span>{new Date(post.date).toLocaleDateString()}</span>
-            </div>
+            <article className="group flex flex-col gap-4 rounded-lg bg-zinc-800 p-6 inset-ring-red-400/20 transition-all select-none hover:inset-ring-1">
+              {/* Title */}
+              <header className="relative w-fit">
+                <h2 className="text-lg font-semibold">
+                  {post.title}
+                </h2>
+                <HeadingUnderline color="red" className="duration-300" />
+              </header>
+
+              <p className="line-clamp-3 grow text-gray-400 group-hover:text-gray-200">
+                {post.description}
+              </p>
+              <footer className="flex flex-wrap items-center gap-4 text-sm text-gray-500 group-hover:text-gray-300">
+                <span>{new Date(post.date).toLocaleDateString(undefined, { year: '2-digit', month: 'short', day: 'numeric' })}</span>
+                <span>•</span>
+                <span>{post.readingTime}</span>
+              </footer>
+            </article>
           </Link>
         ))}
       </div>

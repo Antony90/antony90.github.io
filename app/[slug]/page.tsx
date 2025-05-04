@@ -1,4 +1,4 @@
-import { BlogMeta, getAllPosts } from "@/lib/blog";
+import { getAllPostSlugs, getBlogPostData } from "@/lib/blog";
 
 export default async function BlogPost({
   params,
@@ -6,32 +6,46 @@ export default async function BlogPost({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = await import(`@/blog/${slug}.mdx`);
-
-  const Post = post.default as React.FC;
-  const meta = post.frontmatter as BlogMeta;
+  const { Post, meta } = await getBlogPostData(slug);
 
   return (
-    <section
-      className="flex w-full flex-col gap-6 rounded-lg bg-zinc-900 p-6 text-white"
-      aria-label="blog post"
+    <article
+      className="max-w-3xl p-6 bg-zinc-900 text-white rounded-lg shadow-lg inset-ring-1 inset-ring-zinc-400/20"
+      aria-label={`Blog post: ${meta.title}`}
     >
-      <h1 className="text-4xl font-semibold">{meta.title}</h1>
-      <p className="text-gray-400">{meta.description}</p>
-      <p className="text-gray-500">
-        {new Date(meta.date).toLocaleDateString()}
-      </p>
-      <p className="text-gray-500">{meta.slug}</p>
-      {/* <p className="text-gray-500">{meta.readingTime}</p> */}
-      <Post />
-    </section>
+      <header className="mb-6">
+        <p className="text-sm text-gray-500">{slug}</p>
+        <h1 className="text-4xl font-bold mb-2 text-balance">{meta.title}</h1>
+        <p className="text-gray-400 text-sm">
+          <time dateTime={meta.date}>
+            {new Date(meta.date).toLocaleDateString(undefined, {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </time>
+          <span className="mx-2">·</span>
+          <span>{meta.readingTime}</span>
+        </p>
+      </header>
+
+      <section className="mb-6">
+        <p className="text-zinc-300">{meta.description}</p>
+      </section>
+
+      <hr className="border-zinc-400/20 my-6" />
+
+      <section className="prose prose-invert max-w-none">
+        <Post />
+      </section>
+    </article>
   );
 }
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts();
+  const slugs = await getAllPostSlugs();
 
-  return posts.map(({ slug }) => ({
+  return slugs.map((slug) => ({
     slug,
   }));
 }
