@@ -59,8 +59,8 @@ export default function TechList({ items }: { items: TechName[] }) {
       {shouldAnimate && (
         // Fading gradients at start and end of list
         <>
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-zinc-800 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-          <div className="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-zinc-800 to-transparent " />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-card to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+          <div className="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-card to-transparent " />
         </>
       )}
     </footer>

@@ -28,20 +28,104 @@ body {
 
 */
 
+/*
+Classic blue
+--color-background: #f6f8fc;
+--color-section:    #e8eef8;
+--color-card:       #ffffff;
+--color-accent:     #2563eb;
+--color-primary:    #1a2233;
+--color-muted:      #5c6e8c; */
+
+/* Forest Green
+ --color-background: #f8faf8;
+--color-section:    #e6f4e6;
+--color-card:       #ffffff;
+--color-accent:     #388e3c;
+--color-primary:    #1c2b1c;
+--color-muted:      #4e6e4e; */
+
+/* Pine green
+  --color-background: #f5faf7;
+  --color-section:    #e0eee6;
+  --color-card:       #f8fcf8;
+  --color-accent:     #205c3b;
+  --color-primary:    #18321d;
+  --color-muted:      #4a6e5a;
+*/
+/* Base theme (light mode) */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@theme {
+  --color-background: #f8faf8;
+  --color-section:    #e6f4e6;
+  --color-card:       #ffffff;
+  --color-accent:     #388e3c;
+  --color-primary:    #1c2b1c;
+  --color-muted:      #4e6e4e;
+}
+
+
+
+@layer base {
+  [data-theme="dark"] {
+    --color-background: #121212;
+    --color-section: #1b1b1b;
+    --color-card: #252525;
+    --color-accent: #ff6f61;
+    --color-primary: #f5f5f5;
+    --color-muted: #a1a1a1;
+  }
+}
+
+/* @theme [data-theme='dark'] {
+  --color-background: var(--color-slate-950);
+  --color-section: var(--color-slate-900);
+  --color-card: var(--color-slate-800);
+  --color-accent: var(--color-red-400);
+  --color-primary: #ffffff;
+  --color-muted: var(--color-slate-300);
+} */
+/*
+@media (prefers-color-scheme: dark) {
+  @theme {
+  --color-background: var(--color-slate-950); 
+  --color-section: var(--color-slate-900); 
+  --color-card: var(--color-slate-800); 
+  --color-accent: var(--color-red-400); 
+  --color-primary: #ffffff; 
+  --color-muted: var(--color-slate-300); 
+  }
+}*/
+/* Dark mode overrides */
+
+/* deep black background */
+/* slightly lighter section background */
+/* card background with subtle contrast */
+/* vibrant coral accent */
+/* soft white text for readability */
+/* muted gray for secondary text */
 
 /* Animation */
 
 @keyframes scroll-out {
-  to { transform: translateX(var(--scroll-amount)); }
+  to {
+    transform: translateX(var(--scroll-amount));
+  }
 }
 
 @keyframes hold-position {
-  to { transform: translateX(var(--scroll-amount)); }
+  to {
+    transform: translateX(var(--scroll-amount));
+  }
 }
 
 @keyframes scroll-back {
-  from { transform: translateX(var(--scroll-amount)); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(var(--scroll-amount));
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 @media (hover: none), (pointer: coarse) {
@@ -56,12 +140,14 @@ body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
 .animate-infinite-scroll {
-  animation: scroll 30s linear infinite;
-  display: flex;
-  width: max-content;
+  animation: scroll 40s linear infinite;
+}
+
+html {
+  scroll-behavior: smooth;
 }

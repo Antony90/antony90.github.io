@@ -2,6 +2,7 @@ import { Project } from "@/types/project";
 import TechList from "./TechList";
 import ProjectTitle from "./ProjectTitle";
 import Link from "next/link";
+import Card from "@/components/ui/Card";
 
 export function ProjectCardContent({
   title,
@@ -10,15 +11,13 @@ export function ProjectCardContent({
   sourceURL,
 }: Project) {
   return (
-    <article className="group flex max-w-[480px] flex-col gap-6 rounded-lg bg-zinc-800 p-6 inset-ring-green-400/20 transition-all select-none hover:inset-ring-1">
+    <Card className="group flex max-w-[480px] flex-col gap-6 select-none" hover>
       <ProjectTitle title={title} sourceURL={sourceURL} />
-
-      <p className="text-md line-clamp-4 grow text-gray-300 transition-all group-hover:leading-6 group-hover:text-white">
+      <p className="text-md text-muted line-clamp-4 grow transition-all group-hover:leading-6 group-hover:text-primary">
         {description}
       </p>
-
       <TechList items={techList} />
-    </article>
+    </Card>
   );
 }
 
